@@ -3,20 +3,20 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
-
+  const CustomAppBar({super.key, this.text = 'Notes'});
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: const [
+      children: [
         Text(
-          'Notes',
-          style: TextStyle(
+          text,
+          style: const TextStyle(
             fontSize: 30,
           ),
         ),
-        Spacer(),
-        CustomSearchIcon(),
+        const Spacer(),
+        const CustomSearchIcon(),
       ],
     );
   }
