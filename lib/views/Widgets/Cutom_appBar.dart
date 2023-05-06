@@ -3,8 +3,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, this.text = 'Notes'});
+  const CustomAppBar({super.key, this.text = 'Notes', required this.icon});
   final String text;
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -16,15 +17,17 @@ class CustomAppBar extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        const CustomSearchIcon(),
+        CustomSearchIcon(
+          icon: icon,
+        ),
       ],
     );
   }
 }
 
 class CustomSearchIcon extends StatelessWidget {
-  const CustomSearchIcon({super.key});
-
+  const CustomSearchIcon({super.key, required this.icon});
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,8 +37,8 @@ class CustomSearchIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
         color: Colors.white.withOpacity(.03),
       ),
-      child: const Icon(
-        Icons.search,
+      child: Icon(
+        icon,
         size: 25,
       ),
     );

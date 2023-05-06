@@ -16,7 +16,8 @@ class EditViewBody extends StatelessWidget {
             height: 50,
           ),
           CustomAppBar(
-            text: 'Edit',
+            text: 'Edit Notes',
+            icon: Icons.check,
           ),
         ],
       ),
