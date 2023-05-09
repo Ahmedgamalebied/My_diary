@@ -12,9 +12,3 @@ class ReadNotesSucess extends ReadNotesState {
 }
 
 class ReadNotesLoading extends ReadNotesState {}
-
-class ReadNotesFailure extends ReadNotesState {
-  final String errMessage;
-
-  ReadNotesFailure(this.errMessage);
-}

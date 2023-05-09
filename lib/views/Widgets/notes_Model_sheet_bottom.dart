@@ -17,7 +17,8 @@ class AddNoteButtomSheet extends StatelessWidget {
         ),
       ],
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: BlocConsumer<AddNotesCubit, AddNotesState>(
           builder: (context, state) {
             return SingleChildScrollView(
