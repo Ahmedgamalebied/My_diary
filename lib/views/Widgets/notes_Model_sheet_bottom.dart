@@ -20,7 +20,7 @@ class AddNoteButtomSheet extends StatelessWidget {
           },
           listener: (context, state) {
             if (state is AddNotesFailure) {
-              print('object');
+              print('error${state.errMessage}');
             }
 
             if (state is AddNotesSuccess) {
