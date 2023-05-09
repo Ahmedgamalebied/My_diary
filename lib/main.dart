@@ -14,8 +14,6 @@ void main() async {
 
 class DailyApp extends StatelessWidget {
   const DailyApp({super.key});
-
-  //root widget error
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
