@@ -4,8 +4,9 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:my_diary/constants.dart';
 
 class CustomButtom extends StatelessWidget {
-  const CustomButtom({super.key, this.onTap});
+  const CustomButtom({super.key, this.onTap, this.isloading = false});
   final void Function()? onTap;
+  final bool isloading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,14 +18,23 @@ class CustomButtom extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           color: kprimaryColor,
         ),
-        child: const Center(
-          child: Text(
-            'Add',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-            ),
-          ),
+        child: Center(
+          child: isloading
+              ? const SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                    backgroundColor: Colors.white,
+                  ),
+                )
+              : const Text(
+                  'Add',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
         ),
       ),
     );
