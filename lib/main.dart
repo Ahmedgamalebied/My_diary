@@ -15,7 +15,7 @@ void main() async {
 class DailyApp extends StatelessWidget {
   const DailyApp({super.key});
 
-  // This widget is the root of your application.
+  //root widget
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
