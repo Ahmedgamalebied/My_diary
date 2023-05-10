@@ -8,6 +8,7 @@ import 'package:my_diary/models/note_model.dart';
 import '../../cubits/add_notes/add_notes_cubit.dart';
 import 'Custom_buttom.dart';
 import 'Custom_textfield.dart';
+import 'colorItems.dart';
 
 class AddFormButtomSheet extends StatefulWidget {
   const AddFormButtomSheet({
@@ -25,87 +26,67 @@ class _AddFormButtomSheetState extends State<AddFormButtomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 36,
-          ),
-          CustomTextField(
-            onSaved: (value) {
-              title = value;
-            },
-            hintText: 'Title',
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          CustomTextField(
-            onSaved: (value) {
-              subtitle = value;
-            },
-            hintText: 'content',
-            maxLines: 8,
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          ColorItems(),
-          BlocBuilder<AddNotesCubit, AddNotesState>(builder: (context, state) {
-            return CustomButtom(
-              isloading: state is AddNotesLoading ? true : false,
-              onTap: () {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                  var currentDate = DateTime.now();
-                  var formatDateCurrent = DateFormat.yMd().format(currentDate);
-                  var noteModel = NoteModel(
-                      title: title!,
-                      subtitle: subtitle!,
-                      date: formatDateCurrent,
-                      color: Colors.blueAccent.value);
-                  BlocProvider.of<AddNotesCubit>(context).addNotes(noteModel);
-                } else {
-                  autovalidateMode = AutovalidateMode.always;
-                  setState(() {});
-                }
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 36,
+            ),
+            CustomTextField(
+              onSaved: (value) {
+                title = value;
               },
-            );
-          }),
-          const SizedBox(
-            height: 16,
-          ),
-        ],
+              hintText: 'Title',
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            CustomTextField(
+              onSaved: (value) {
+                subtitle = value;
+              },
+              hintText: 'content',
+              maxLines: 8,
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const ColorListView(),
+            const SizedBox(
+              height: 16,
+            ),
+            BlocBuilder<AddNotesCubit, AddNotesState>(
+                builder: (context, state) {
+              return CustomButtom(
+                isloading: state is AddNotesLoading ? true : false,
+                onTap: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    var currentDate = DateTime.now();
+                    var formatDateCurrent =
+                        DateFormat.yMd().format(currentDate);
+                    var noteModel = NoteModel(
+                        title: title!,
+                        subtitle: subtitle!,
+                        date: formatDateCurrent,
+                        color: Colors.blueAccent.value);
+                    BlocProvider.of<AddNotesCubit>(context).addNotes(noteModel);
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+              );
+            }),
+            const SizedBox(
+              height: 16,
+            ),
+          ],
+        ),
       ),
-    );
-  }
-}
-
-class ColorItems extends StatelessWidget {
-  const ColorItems({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const CircleAvatar(
-      radius: 24,
-      backgroundColor: Colors.blue,
-    );
-  }
-}
-
-class ColorListView extends StatelessWidget {
-  const ColorListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 24 * 2,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            return ColorItems();
-          }),
     );
   }
 }
