@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
-import 'package:meta/meta.dart';
 import 'package:my_diary/models/note_model.dart';
 
 import '../../constants.dart';
@@ -13,6 +13,6 @@ class ReadNotesCubit extends Cubit<ReadNotesState> {
   fetchAllNotes() async {
     var notesBox = Hive.box<NoteModel>(kNotesBox);
     notes = notesBox.values.toList();
-    emit(ReadNotesSucess(notes!));
+    emit(ReadNotesSucess());
   }
 }

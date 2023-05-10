@@ -59,6 +59,7 @@ class NotesListview extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: NoteItems(
+                    BlocProvider.of<ReadNotesCubit>(context).fetchAllNotes(),
                     notes: notes[index],
                   ),
                 );

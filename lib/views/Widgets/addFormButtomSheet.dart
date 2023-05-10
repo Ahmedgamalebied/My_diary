@@ -2,6 +2,7 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:my_diary/cubits/read_notes/read_notes_cubit.dart';
 import 'package:my_diary/models/note_model.dart';
 
 import '../../cubits/add_notes/add_notes_cubit.dart';
@@ -16,9 +17,6 @@ class AddFormButtomSheet extends StatefulWidget {
   @override
   State<AddFormButtomSheet> createState() => _AddFormButtomSheetState();
 }
-
-DateTime now = DateTime.now();
-String formattedDate = DateFormat.yMMMEd().format(now);
 
 class _AddFormButtomSheetState extends State<AddFormButtomSheet> {
   GlobalKey<FormState> formKey = GlobalKey();

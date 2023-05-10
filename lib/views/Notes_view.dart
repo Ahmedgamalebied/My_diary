@@ -15,6 +15,7 @@ class NotesView extends StatelessWidget {
     return BlocProvider(
       create: (context) => ReadNotesCubit(),
       child: Scaffold(
+        body: const NotesviewBody(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
@@ -31,7 +32,6 @@ class NotesView extends StatelessWidget {
             size: 30,
           ),
         ),
-        body: const NotesviewBody(),
       ),
     );
   }

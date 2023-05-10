@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_diary/constants.dart';
+import 'package:my_diary/cubits/read_notes/read_notes_cubit.dart';
 
 import '../../models/note_model.dart';
 import '../edit_notes_view.dart';
 import 'Edit_View_Body.dart';
 
 class NoteItems extends StatelessWidget {
-  const NoteItems({super.key, required this.notes});
+  const NoteItems(fetchAllNotes, {super.key, required this.notes});
   final NoteModel notes;
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,7 @@ class NoteItems extends StatelessWidget {
                 ),
                 onPressed: () {
                   notes.delete();
+                  BlocProvider.of<ReadNotesCubit>(context).fetchAllNotes();
                 },
               ),
             ),
