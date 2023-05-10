@@ -24,8 +24,7 @@ class _AddFormButtomSheetState extends State<AddFormButtomSheet> {
   GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subtitle;
-  final df = new DateFormat('dd-MM-yyyy hh:mm a');
-  int myvalue = 1558432747;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -60,11 +59,12 @@ class _AddFormButtomSheetState extends State<AddFormButtomSheet> {
               onTap: () {
                 if (formKey.currentState!.validate()) {
                   formKey.currentState!.save();
+                  var currentDate = DateTime.now();
+                  var formatDateCurrent = DateFormat.yMd().format(currentDate);
                   var noteModel = NoteModel(
                       title: title!,
                       subtitle: subtitle!,
-                      date: formatDate(DateTime.now(),
-                          [dd, '/', mm, '/', yyyy, ' ', HH, ':', nn]),
+                      date: formatDateCurrent,
                       color: Colors.blueAccent.value);
                   BlocProvider.of<AddNotesCubit>(context).addNotes(noteModel);
                 } else {
