@@ -51,6 +51,7 @@ class _AddFormButtomSheetState extends State<AddFormButtomSheet> {
           const SizedBox(
             height: 16,
           ),
+          ColorItems(),
           BlocBuilder<AddNotesCubit, AddNotesState>(builder: (context, state) {
             return CustomButtom(
               isloading: state is AddNotesLoading ? true : false,
@@ -77,6 +78,34 @@ class _AddFormButtomSheetState extends State<AddFormButtomSheet> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class ColorItems extends StatelessWidget {
+  const ColorItems({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CircleAvatar(
+      radius: 24,
+      backgroundColor: Colors.blue,
+    );
+  }
+}
+
+class ColorListView extends StatelessWidget {
+  const ColorListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 24 * 2,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return ColorItems();
+          }),
     );
   }
 }
