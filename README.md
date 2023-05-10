@@ -1,16 +1,16 @@
 # my_diary
 
+
+https://github.com/Ahmedgamalebied/My_diary/assets/93084790/544eb4f8-94ea-4bb4-ba3b-b217012588cf
+
+
 A new Flutter project.
+Buttom Sheet view
 
-## Getting Started
+![13](https://github.com/Ahmedgamalebied/My_diary/assets/93084790/acb8732b-425d-4907-8271-611b11a29760)
 
-This project is a starting point for a Flutter application.
+note view
+![12](https://github.com/Ahmedgamalebied/My_diary/assets/93084790/eea3e77c-a429-4876-b49e-180c87f12967)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+edit view
+![14](https://github.com/Ahmedgamalebied/My_diary/assets/93084790/3b7ffc1b-1b55-438b-b4c4-674e1f2c4d0c)
