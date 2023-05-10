@@ -3,9 +3,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, this.text = 'Notes', required this.icon});
+  const CustomAppBar(
+      {super.key, this.text = 'Notes', required this.icon, this.onPressed});
   final String text;
   final IconData icon;
+  final void Function()? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,6 +21,7 @@ class CustomAppBar extends StatelessWidget {
         ),
         const Spacer(),
         CustomSearchIcon(
+          onPressed: onPressed,
           icon: icon,
         ),
       ],
@@ -26,8 +30,9 @@ class CustomAppBar extends StatelessWidget {
 }
 
 class CustomSearchIcon extends StatelessWidget {
-  const CustomSearchIcon({super.key, required this.icon});
+  const CustomSearchIcon({super.key, required this.icon, this.onPressed});
   final IconData icon;
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,9 +42,12 @@ class CustomSearchIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
         color: Colors.white.withOpacity(.03),
       ),
-      child: Icon(
-        icon,
-        size: 25,
+      child: IconButton(
+        icon: Icon(
+          icon,
+          size: 25,
+        ),
+        onPressed: onPressed,
       ),
     );
   }
